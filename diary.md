@@ -19,6 +19,11 @@ whatsoever. A small issue of the Go implementation is the random iteration order
 of maps. I had to resort to slice pairs for that purpose, which is not very
 nice, but did the job.
 
+For Rust, I mostly re-implemented the Go code with very few changes. I had to
+put the data structures into the `main` function, for example. The output is
+slightly different, because Rust prints a slightly different scientific
+notation; but the numbers add up (again).
+
 # 2023-07-29 (Sa)
 
 Being back home after my holidays, I finally picked up _Introduction to
