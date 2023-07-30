@@ -5,7 +5,7 @@ Algorithms, 4th Edition](https://mitpress.mit.edu/9780262046305/) and
 implementing the algorithms in:
 
 - [Go](go/)
-- Rust
+- [Rust](rust/)
 - Erlang
 - Clojure
 
