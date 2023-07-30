@@ -11,6 +11,14 @@ like to use for this project. (I implemented an approximative, computational
 solution.) This would be a good exercise before starting with the actual
 algorithms in chapter 2.
 
+Having re-implemented the first problem in Go, I compared the output of the
+Python and the Go implementation using `vimdiff`. Not a single difference. None!
+I first thought that I've overwritten the original output with my Go program,
+but after re-generating both outputs, there still was _no_ difference
+whatsoever. A small issue of the Go implementation is the random iteration order
+of maps. I had to resort to slice pairs for that purpose, which is not very
+nice, but did the job.
+
 # 2023-07-29 (Sa)
 
 Being back home after my holidays, I finally picked up _Introduction to
