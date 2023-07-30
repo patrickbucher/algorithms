@@ -24,6 +24,10 @@ put the data structures into the `main` function, for example. The output is
 slightly different, because Rust prints a slightly different scientific
 notation; but the numbers add up (again).
 
+I read the first 75 pages in the Erlang book besides. However, I don't have all
+the knowledge together yet to tackle the first problem in Erlang. Therefore, I
+started with the Clojure implementation.
+
 # 2023-07-29 (Sa)
 
 Being back home after my holidays, I finally picked up _Introduction to
