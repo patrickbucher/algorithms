@@ -37,6 +37,6 @@ main(_) ->
     Computations = [{Mul, Ord} || Ord <- Orders, Mul <- Multipliers],
     Results = lists:map(fun({{Dur, Ms}, {Ord, Fn}}) ->
                                 N = find_max_n(Fn, 0.0, 10.0, fun(N) -> N * 1.001 end, Ms),
-                                {Dur, Ord, N}
+                                {Ord, Dur, N}
                         end, Computations),
-    lists:foreach(fun({Dur, Ord, N}) -> io:format("~s ~s: n=~.3e\n", [Dur, Ord, N]) end, Results).
+    lists:foreach(fun({Ord, Dur, N}) -> io:format("~s ~s: n=~.3e\n", [Ord, Dur, N]) end, Results).
