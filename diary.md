@@ -1,3 +1,10 @@
+# 2023-07-31 (Mo)
+
+I started with simplifying the Clojure code from last night; the computation of
+the accumulated durations is now a one-liner, and probably also faster.
+Afterwards, I finally wrote some Erlang code by replicating what I did in
+Clojure before. The 1-based index of `lists:sublist/3` is rather odd.
+
 # 2023-07-30 (Su)
 
 I finished reading chapter 1, but struggled with the logarithm calculations.
