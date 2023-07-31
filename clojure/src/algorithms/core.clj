@@ -41,4 +41,4 @@
         results (map (fn [[[ord f] [dur ms]]]
                        [ord dur (find-max-n ord f 0.0 10.0 #(* % 1.001) ms)])
                      computations)]
-    (apply println (map #(format "%s %s: n=%.3e\n" (nth % 0) (nth % 1) (nth % 2)) results))))
+    (run! println (map #(format "%s %s: n=%.3e" (nth % 0) (nth % 1) (nth % 2)) results))))
