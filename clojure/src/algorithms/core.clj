@@ -7,16 +7,7 @@
 (defn calculate-multipliers
   "Computes the milliseconds in durations with the factors provided."
   [durations factors]
-  (let [duration-factors (partition 2 (interleave durations factors))]
-    (reduce (fn [{millis :millis durations :durations}
-                 pair]
-              (let [duration (first pair)
-                    multiplier (last pair)
-                    millis (* millis multiplier)]
-                {:millis millis
-                 :durations (conj durations (list duration millis))}))
-            {:millis 1 :durations (list)}
-            duration-factors)))
+  (into {} (map-indexed (fn [i d] [d (reduce * (take (inc i) factors))]) durations)))
 
 (defn -main
   "I don't do a whole lot ... yet."
