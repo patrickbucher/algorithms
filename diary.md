@@ -12,6 +12,12 @@ expecting an integer with a float that was slightly off). The syntax is also
 quite tricky when it comes to branching, especially getting the interpunction
 right.
 
+In the evening, I implemented the first problem in Clojure. The int/float
+mismatch once more caused some trouble (the `factorial` function didn't
+terminate when comparing the result to 0). I was basically finished with
+everything, until I had [issues](https://stackoverflow.com/q/76807179/6763074)
+with the formatted output.
+
 # 2023-07-30 (Su)
 
 I finished reading chapter 1, but struggled with the logarithm calculations.
