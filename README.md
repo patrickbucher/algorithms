@@ -11,3 +11,6 @@ implementing the algorithms in:
 
 While keeping a [diary](diary.md) and working on [exercises](exercises/) and
 [problems](problems/).
+
+Here's
+[why](https://paedubucher.ch/articles/2023-07-29-learning-algorithms.html).
