@@ -6,8 +6,8 @@ implementing the algorithms in:
 
 - [Go](go/)
 - [Rust](rust/)
-- Erlang
-- Clojure
+- [Erlang](erlang/)
+- [Clojure](clojure/)
 
 While keeping a [diary](diary.md) and working on [exercises](exercises/) and
 [problems](problems/).

@@ -5,6 +5,13 @@ the accumulated durations is now a one-liner, and probably also faster.
 Afterwards, I finally wrote some Erlang code by replicating what I did in
 Clojure before. The 1-based index of `lists:sublist/3` is rather odd.
 
+Later, I was able to finish the implementation in Erlang. The program runs
+extremely slow, but works. The 12% CPU usage makes me yearn after concurrency. I
+had a lot of issues with overflows, but also some mismatches (calling a function
+expecting an integer with a float that was slightly off). The syntax is also
+quite tricky when it comes to branching, especially getting the interpunction
+right.
+
 # 2023-07-30 (Su)
 
 I finished reading chapter 1, but struggled with the logarithm calculations.
