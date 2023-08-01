@@ -13,6 +13,14 @@ Which further requires:
 2. Test Data: generating arrays of random numbers of a given length
 3. Conversion: binary to decimal, decimal to binary
 
+I started the implementation of Insertion Sort in Go and wrote a good deal of
+unit test, with according helper functions (generate random slices, check
+equality of slices, check ordering of slices)—with further unit tests. This
+small framework will be helpful for all sorting algorithms to be covered, and it
+is a good exercise to write it for every language. I write those procedures
+using parametric polymorphism (generics), even though I'm using just `int` for
+the test data. But working with generics is a good practice.
+
 # 2023-07-31 (Mo)
 
 I started with simplifying the Clojure code from last night; the computation of
