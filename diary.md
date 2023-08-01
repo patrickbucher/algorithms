@@ -1,3 +1,18 @@
+# 2023-08-01 (Tu)
+
+I read the first part of chapter 2 and worked through all the exercises. This
+gives me a couple of things to implement:
+
+1. Insertion Sort (in ascending and descending order)
+2. Linear Search
+3. Binary Addition
+
+Which further requires:
+
+1. Unit Testing: testing if a sequence is ordered, ascending or descending
+2. Test Data: generating arrays of random numbers of a given length
+3. Conversion: binary to decimal, decimal to binary
+
 # 2023-07-31 (Mo)
 
 I started with simplifying the Clojure code from last night; the computation of
