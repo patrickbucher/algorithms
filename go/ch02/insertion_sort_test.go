@@ -4,10 +4,16 @@ import (
 	"testing"
 
 	"github.com/patrickbucher/algorithms/sorting"
+	"golang.org/x/exp/constraints"
 )
 
+type SortTestCase[T constraints.Ordered] struct {
+	Input    []T
+	Expected []T
+}
+
 func TestInsertionSort(t *testing.T) {
-	tests := []sorting.SortTestCase[int]{
+	tests := []SortTestCase[int]{
 		{[]int{}, []int{}},
 		{[]int{1}, []int{1}},
 		{[]int{2, 1}, []int{1, 2}},
