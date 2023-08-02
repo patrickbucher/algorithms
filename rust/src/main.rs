@@ -30,7 +30,7 @@ fn main() {
     let mut timings: HashMap<&str, i64> = HashMap::new();
     for i in 0..milliseconds_multipliers.len() {
         let mut multiplier: i64 = 1;
-        for j in 0..(i+1) {
+        for j in 0..(i + 1) {
             multiplier *= milliseconds_multipliers[j];
         }
         timings.insert(periods[i], multiplier);
