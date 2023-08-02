@@ -6,6 +6,10 @@ makes it a good fit for the upcoming rewriting exercises. I didn't bother too
 much with error checking; something I should pay more attention to for the Rust
 implementation, which is up next.
 
+I re-structured the Cargo project for Rust, and struggled a bit with modules.
+Afterwards, I implemented the `equal` predicate for vectors with a couple of
+tests, and called it a day.
+
 # 2023-08-01 (Tu)
 
 I read the first part of chapter 2 and worked through all the exercises. This
