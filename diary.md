@@ -1,3 +1,11 @@
+# 2023-08-02 (We)
+
+I implemented the remainder (linear search, binary addition and conversion) in
+Go with a couple of test cases. None of the implementations were hard, which
+makes it a good fit for the upcoming rewriting exercises. I didn't bother too
+much with error checking; something I should pay more attention to for the Rust
+implementation, which is up next.
+
 # 2023-08-01 (Tu)
 
 I read the first part of chapter 2 and worked through all the exercises. This
