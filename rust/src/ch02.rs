@@ -63,14 +63,63 @@ pub fn add_binary(xs: &Vec<u8>, ys: &Vec<u8>) -> Vec<u8> {
     return zs;
 }
 
+pub fn binary_to_decimal(bin: &Vec<u8>) -> u32 {
+    let mut acc: u32 = 0;
+    for i in 0..bin.len() {
+        acc += bin[i] as u32 * 2_u32.pow(i as u32);
+    }
+    return acc;
+}
+
+pub fn decimal_to_binary(mut dec: u32) -> Vec<u8> {
+    if dec == 0 {
+        return vec![0];
+    }
+    let mut acc: Vec<u8> = Vec::new();
+    while dec > 0 {
+        acc.push((dec % 2) as u8);
+        dec /= 2;
+    }
+    return acc;
+}
+
 #[cfg(test)]
 mod tests {
     use crate::ch02::add_binary;
+    use crate::ch02::binary_to_decimal;
+    use crate::ch02::decimal_to_binary;
     use crate::ch02::insertion_sort;
     use crate::ch02::linear_search;
     use crate::sorting::equal;
     use crate::sorting::is_sorted_asc;
     use crate::sorting::random_vec;
+
+    #[test]
+    fn test_decimal_to_binary() {
+        assert_eq!(decimal_to_binary(0), vec![0]);
+        assert_eq!(decimal_to_binary(1), vec![1]);
+        assert_eq!(decimal_to_binary(2), vec![0, 1]);
+        assert_eq!(decimal_to_binary(3), vec![1, 1]);
+        assert_eq!(decimal_to_binary(4), vec![0, 0, 1]);
+        assert_eq!(decimal_to_binary(5), vec![1, 0, 1]);
+        assert_eq!(decimal_to_binary(6), vec![0, 1, 1]);
+        assert_eq!(decimal_to_binary(7), vec![1, 1, 1]);
+        assert_eq!(decimal_to_binary(8), vec![0, 0, 0, 1]);
+    }
+
+    #[test]
+    fn test_binary_to_decimal() {
+        assert_eq!(binary_to_decimal(&Vec::new()), 0);
+        assert_eq!(binary_to_decimal(&vec![0]), 0);
+        assert_eq!(binary_to_decimal(&vec![1]), 1);
+        assert_eq!(binary_to_decimal(&vec![0, 1]), 2);
+        assert_eq!(binary_to_decimal(&vec![1, 1]), 3);
+        assert_eq!(binary_to_decimal(&vec![0, 0, 1]), 4);
+        assert_eq!(binary_to_decimal(&vec![1, 0, 1]), 5);
+        assert_eq!(binary_to_decimal(&vec![0, 1, 1]), 6);
+        assert_eq!(binary_to_decimal(&vec![1, 1, 1]), 7);
+        assert_eq!(binary_to_decimal(&vec![0, 0, 0, 1]), 8);
+    }
 
     #[test]
     fn test_add_empty_binaries() {
