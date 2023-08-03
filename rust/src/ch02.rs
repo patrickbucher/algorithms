@@ -9,14 +9,16 @@ pub fn insertion_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
     }
     for i in 1..n {
         let key = ordered[i];
-        // TODO: j as i32 is a mess (possible underflow), refactor
-        let mut j: i32 = (i - 1).try_into().unwrap();
-        while j >= 0 && ordered[j as usize] > key {
-            ordered[(j + 1) as usize] = ordered[j as usize];
-            j -= 1;
+        let mut insert_at: usize = i;
+        for j in (0..i).rev() {
+            if ordered[j] > key {
+                ordered[j + 1] = ordered[j];
+                insert_at = j;
+            } else {
+                break;
+            }
         }
-        ordered[(j + 1) as usize] = key;
-        // TODO: end of messy part
+        ordered[insert_at] = key;
     }
     return ordered;
 }
@@ -42,6 +44,14 @@ mod tests {
 
     #[test]
     fn test_sort_multiple_elements() {
+        let values = vec![3, 1, 2];
+        let expected = vec![1, 2, 3];
+        let actual = &insertion_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_sort_more_multiple_elements() {
         let values = vec![6, 1, 2, 5, 4, 3];
         let expected = vec![1, 2, 3, 4, 5, 6];
         let actual = &insertion_sort(&values);

@@ -16,6 +16,11 @@ implementation in the book lead to a negative underflow for certain test data
 the leftmost spot, turning `j` negative _after_ the operation). So there must be
 a more elegant solution to this, which I'll attempt to find later.
 
+I figured a way out to avoid negative values for `j` by dragging an additional
+variable for the insertion position along. Unfortunately, I spent a lot of time
+because I got reverse ranges (e.g. `j..=0`) wrong; in Rust, you have to write
+them as `(0..=j).rev()`.
+
 # 2023-08-02 (We)
 
 I implemented the remainder (linear search, binary addition and conversion) in
