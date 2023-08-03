@@ -23,12 +23,47 @@ pub fn insertion_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
     return ordered;
 }
 
+pub fn linear_search<T: Eq>(haystack: &Vec<T>, needle: T) -> Option<usize> {
+    for i in 0..haystack.len() {
+        if haystack[i] == needle {
+            return Some(i);
+        }
+    }
+    return None;
+}
+
 #[cfg(test)]
 mod tests {
     use crate::ch02::insertion_sort;
+    use crate::ch02::linear_search;
     use crate::sorting::equal;
     use crate::sorting::is_sorted_asc;
     use crate::sorting::random_vec;
+
+    #[test]
+    fn test_linear_search_empty() {
+        assert_eq!(linear_search(&Vec::<i32>::new(), 1 as i32), None);
+    }
+
+    #[test]
+    fn test_linear_search_single_found() {
+        assert_eq!(linear_search(&vec![1], 1 as i32), Some(0));
+    }
+
+    #[test]
+    fn test_linear_search_single_not_found() {
+        assert_eq!(linear_search(&vec![1], 2 as i32), None);
+    }
+
+    #[test]
+    fn test_linear_search_multiple_found() {
+        assert_eq!(linear_search(&vec![1, 2, 3, 4, 5], 3 as i32), Some(2));
+    }
+
+    #[test]
+    fn test_linear_search_multiple_not_found() {
+        assert_eq!(linear_search(&vec![1, 2, 3, 4, 5], 9 as i32), None);
+    }
 
     #[test]
     fn test_sort_empty_vec() {
