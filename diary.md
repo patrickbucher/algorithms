@@ -1,3 +1,21 @@
+# 2023-08-03 (Th)
+
+I finished implementing the helper functions for sorting in Rust (comparing
+vectors, generating vectors of random integer values) with some test cases. I
+have to be more considerate when it comes to expecting vectors as parameters and
+only expect references instead of transferring ownership. This is also a design
+decision I made early on: The algorithms should not perform destructive
+operations on their parameters. In Rust, the API makes this pretty clear.
+
+Implementing insertion sort in Rust revealed a small issue: the counter variable
+`j` to iterate through the left part of the element to be inserted can assume a
+negative value at the end of the loop. This is an issue in Rust, where indices
+are of type `usize`, i.e. unsigned, which totally makes sense. However, the
+implementation in the book lead to a negative underflow for certain test data
+(e.g. a descending vector `[3, 2, 1]`, where every element has to be inserted at
+the leftmost spot, turning `j` negative _after_ the operation). So there must be
+a more elegant solution to this, which I'll attempt to find later.
+
 # 2023-08-02 (We)
 
 I implemented the remainder (linear search, binary addition and conversion) in
