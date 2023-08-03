@@ -21,6 +21,10 @@ variable for the insertion position along. Unfortunately, I spent a lot of time
 because I got reverse ranges (e.g. `j..=0`) wrong; in Rust, you have to write
 them as `(0..=j).rev()`.
 
+In the evening, I implemented linear search and binary/decimal conversion (and
+back), which was rather easy. I'm looking forward to the Erlang implementation,
+but I have no idea yet, how unit testing is done in Erlang.
+
 # 2023-08-02 (We)
 
 I implemented the remainder (linear search, binary addition and conversion) in
