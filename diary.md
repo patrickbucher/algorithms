@@ -1,3 +1,19 @@
+# 2023-08-04 (Fr)
+
+I started with the Erlang implementation of the sorting helper functions. But
+first, I had to figure out how to write unit tests. I wrote a tiny helper script
+for EUnit, which compiles both the test and productive module, and then executes
+the tests. The syntax is quite succinct.
+
+A pattern I discovered is to write a function of arity `n` for export, and then
+another internal implementation of arity `n+1` accepting an accumulator
+parameter. I prefer this approach to the Scheme pattern of writing an internal
+`next` function dealing with the accumulator (less nesting).
+
+Having worked with Scheme in the last year, the implementations were rather
+easy. Thinking in base cases and general cases really became second nature to
+me.
+
 # 2023-08-03 (Th)
 
 I finished implementing the helper functions for sorting in Rust (comparing
