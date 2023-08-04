@@ -14,3 +14,9 @@ random_list_test() ->
     ?assertEqual(sorting:random_list(5, 10, 1), []),
     List = sorting:random_list(1000, 10, 20),
     ?assert(lists:all(fun(Element) -> (Element >= 10 andalso Element < 20) end, List)).
+
+is_sorted_test() ->
+    ?assert(sorting:is_sorted([])),
+    ?assert(sorting:is_sorted([1])),
+    ?assert(sorting:is_sorted([1, 2])),
+    ?assert(sorting:is_sorted([1, 2, 3, 4, 5])).
