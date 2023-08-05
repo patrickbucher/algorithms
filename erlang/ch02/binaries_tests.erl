@@ -23,3 +23,14 @@ binary_to_decimal_test() ->
     ?assertEqual(binaries:binary_to_decimal([0, 1, 1]), 6),
     ?assertEqual(binaries:binary_to_decimal([1, 1, 1]), 7),
     ?assertEqual(binaries:binary_to_decimal([0, 0, 0, 1]), 8).
+
+decimal_to_binary_test() ->
+    ?assert(sorting:equal(binaries:decimal_to_binary(0), [0])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(1), [1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(2), [0, 1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(3), [1, 1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(4), [0, 0, 1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(5), [1, 0, 1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(6), [0, 1, 1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(7), [1, 1, 1])),
+    ?assert(sorting:equal(binaries:decimal_to_binary(8), [0, 0, 0, 1])).
