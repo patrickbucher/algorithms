@@ -10,3 +10,14 @@
         (not (= (count left) (count right))) false
         (= (first left) (first right)) (equal (rest left) (rest right))
         :else false))
+
+(defn random-list
+  "Returns a list of size n with random elements in [min;max[."
+  ([n min max]
+   (if (>= min max)
+     []
+     (random-list n min max '())))
+  ([n min max acc]
+   (if (= n 0)
+     acc
+     (random-list (dec n) min max (cons (+ (rand-int (- max min)) min) acc)))))
