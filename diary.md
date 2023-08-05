@@ -8,6 +8,16 @@ for the cons cell approach Erlang is using, so I inserted from the left instead.
 When I was done with the implementation, the tests passed immediately, without
 any further fiddling (as I had to do with the overworked Rust implementation).
 
+In Erlang, it is easier to deal with two functions with a lower arity rather
+than with a single function of a higher arity: Insertion sort requires walking
+through the sorted accumulator to insert the current head of the unsorted part.
+Doing all this in a single function with an arity of four (three of with are
+lists) requires a lot of base cases: Every list can be empty, contain one or
+multiple elements, which yields a total of 3³ = 27 combinations. Therefore, I
+split up the implementation into `sort/3` and `insert_into/3`, with every
+function only having two list parameters, i.e. 2 * 2³ = 16 combinations, some of
+which _obviously_ can be ignored.
+
 # 2023-08-04 (Fr)
 
 I started with the Erlang implementation of the sorting helper functions. But
