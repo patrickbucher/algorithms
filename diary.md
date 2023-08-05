@@ -1,3 +1,13 @@
+# 2023-08-05 (Sa)
+
+I read the chapter on _Errors and Exceptions_ in the Erlang book, which I do in
+parallel. (I need to catch up with Erlang to the other languages I already now a
+bit better.) Then I implemented insertion sort in Erlang, which required a
+slightly different approach: Inserting into a list from the right is a bad match
+for the cons cell approach Erlang is using, so I inserted from the left instead.
+When I was done with the implementation, the tests passed immediately, without
+any further fiddling (as I had to do with the overworked Rust implementation).
+
 # 2023-08-04 (Fr)
 
 I started with the Erlang implementation of the sorting helper functions. But
