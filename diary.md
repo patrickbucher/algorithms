@@ -21,6 +21,19 @@ which _obviously_ can be ignored.
 I finished with implementing linear search, binary addition and conversion in
 Erlang; now on towards Clojure, then I'll tackle the next sub-chapter.
 
+With Clojure, I first needed to get the structure of the test and library code
+right. Having done that, I implemented the functions to test two vectors for
+equality, and to generate lists of random elements. There are two things I need
+to do:
+
+1. Decide for a data structure to use (list or vector), or just use a generic
+   sequence instead. (Vectors seem the better choice for shifting around
+   elements by index.)
+2. I need to re-implement the random list generator function in terms of a
+   `iterate` and `take`, which will yield much shorter code.
+
+But that's for tomorrow.
+
 # 2023-08-04 (Fr)
 
 I started with the Erlang implementation of the sorting helper functions. But
