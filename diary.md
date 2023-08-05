@@ -18,6 +18,9 @@ split up the implementation into `sort/3` and `insert_into/3`, with every
 function only having two list parameters, i.e. 2 * 2³ = 16 combinations, some of
 which _obviously_ can be ignored.
 
+I finished with implementing linear search, binary addition and conversion in
+Erlang; now on towards Clojure, then I'll tackle the next sub-chapter.
+
 # 2023-08-04 (Fr)
 
 I started with the Erlang implementation of the sorting helper functions. But
