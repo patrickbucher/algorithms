@@ -22,3 +22,13 @@
   (if (or (empty? v) (= (count v) 1))
     true
     (and (p (first v) (second v)) (is-sorted (rest v) p))))
+
+(defn is-sorted-asc
+  "Returns true if the given vector is sorted in asceding order."
+  [v]
+  (is-sorted v #(<= %1 %2)))
+
+(defn is-sorted-desc
+  "Returns true if the given vector is sorted in descending order."
+  [v]
+  (is-sorted v #(>= %1 %2)))

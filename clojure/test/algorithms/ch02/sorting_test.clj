@@ -21,7 +21,7 @@
       (is (every? #(and (>= % 1) (< % 10)) l)))))
 
 (deftest test-is-sorted
-  (testing "ascending order of elements in a vector"
+  (testing "order of elements in a vector"
     (let [asc #(<= %1 %2)
           desc #(>= %1 %2)]
       (is (is-sorted [] asc))
@@ -38,3 +38,21 @@
       (is (is-sorted [9 8 7 6 5 4 3 2 1 0] desc))
       (is (not (is-sorted [5 4 6 3 7 2 1 8 9 0] asc)))
       (is (not (is-sorted [5 4 6 3 7 2 1 8 9 0] desc))))))
+
+(deftest test-is-sorted-asc
+  (testing "ascending order of elements in a vector"
+    (is (is-sorted-asc []))
+    (is (is-sorted-asc [0]))
+    (is (is-sorted-asc [0 1]))
+    (is (not (is-sorted-asc [1 0])))
+    (is (is-sorted-asc [0 1 2]))
+    (is (not (is-sorted-asc [0 2 1])))))
+
+(deftest test-is-sorted-desc
+  (testing "descending order of elements in a vector"
+    (is (is-sorted-desc []))
+    (is (is-sorted-desc [0]))
+    (is (is-sorted-desc [1 0]))
+    (is (not (is-sorted-desc [0 1])))
+    (is (is-sorted-desc [2 1 0]))
+    (is (not (is-sorted-desc [1 2 0])))))
