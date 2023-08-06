@@ -17,4 +17,8 @@ Here's
 
 ## Algorithms covered
 
-- Insertion Sort
+- Sorting
+    - Insertion Sort
+- Miscellaneous
+    - binary addition
+    - binary to decimal and decimal to binary conversion
