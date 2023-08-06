@@ -1,3 +1,11 @@
+# 2023-08-06 (Su)
+
+I'm now using vectors for the helper functions in the Clojure sorting module,
+and I also simplified the implementation of the function that generates a vector
+of random elements using `iterate`, `take`, and `drop`. Even though Clojure
+already has a `sorted?` predicate for collections, I wrote my own just for the
+sake of comparison.
+
 # 2023-08-05 (Sa)
 
 I read the chapter on _Errors and Exceptions_ in the Erlang book, which I do in
