@@ -9,6 +9,17 @@ sake of comparison.
 Insertion Sort was easy to implement using `takewhile` and `drop`, which I
 probably also could have used for the Erlang implementation.
 
+For the binary addition, I first got the order of the result wrong. Used on a
+list and on a vector, `cons` adds to the front or end, respectively.
+
+The binary/decimal conversion was quite straightforward; however, I have to
+remind myself to use `recur` instead of literal recursive calls in Clojure.
+
+This concludes my first full week of working on this learning project, and also
+the end of the first iteration with an algorithm (Insertion Sort). I'm looking
+forward to tackle more interesting algorithms, and hope to make shorter
+iterations, now that I've got the basics of every language under my belt.
+
 # 2023-08-05 (Sa)
 
 I read the chapter on _Errors and Exceptions_ in the Erlang book, which I do in
