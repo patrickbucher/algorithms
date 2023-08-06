@@ -6,6 +6,9 @@ of random elements using `iterate`, `take`, and `drop`. Even though Clojure
 already has a `sorted?` predicate for collections, I wrote my own just for the
 sake of comparison.
 
+Insertion Sort was easy to implement using `takewhile` and `drop`, which I
+probably also could have used for the Erlang implementation.
+
 # 2023-08-05 (Sa)
 
 I read the chapter on _Errors and Exceptions_ in the Erlang book, which I do in
