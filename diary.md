@@ -25,6 +25,11 @@ Th Erlang implementation was a bit trickier; I had to write a helper function
 list. I got that one right on first try, but used it the wrong way in the actual
 algorithm.
 
+I implemented the same helper (`smallest-to-front`) in Clojure, so the Selection
+Sort implementation turned out quite similar to the Erlang version.
+
+And that was the entire iteration in a single day; faster than I hoped for!
+
 # 2023-08-06 (Su)
 
 I'm now using vectors for the helper functions in the Clojure sorting module,
