@@ -14,6 +14,10 @@ implementations, but not so for vector implementations. So here's my plan:
    arrays of random elements.
 3. Re-implement Selection Sort in Rust, Erlang, and Clojure.
 
+I implemented Selection Sort from my pseudo-code solution, and it worked
+immediately. I benchmarked it against insertion sort, and it is roughtly 75%
+slower than Insertion Sort.
+
 # 2023-08-06 (Su)
 
 I'm now using vectors for the helper functions in the Clojure sorting module,
