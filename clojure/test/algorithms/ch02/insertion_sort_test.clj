@@ -3,7 +3,7 @@
             [algorithms.ch02.sorting :refer :all]
             [algorithms.ch02.insertion-sort :refer :all]))
 
-(deftest test-hello
+(deftest test-insertion-sort
   (testing "insertion sort"
     (is (is-sorted-asc (insertion-sort [])))
     (is (is-sorted-asc (insertion-sort [1])))
