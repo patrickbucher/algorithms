@@ -1,3 +1,19 @@
+# 2023-08-07 (Mo)
+
+I read the second part of the second chapter and managed to do the rather easy
+exercises. This section gives me one algorithm to implement: Selection Sort. My
+haunch is that Insertion Sort is way more efficient, because inserting any value
+into the sorted part can be cut short during the process of iterating the sorted
+part backwards. Not so in Selection Sort, which always requires to search the
+entire unsorted part for the next element to be inserted. On the other side,
+Insertion Sort requires shifting the array, which is efficient for list
+implementations, but not so for vector implementations. So here's my plan:
+
+1. Implement Selection Sort in Go.
+2. Write benchmarks for both Insertion Sort and Selection Sort in Go with big
+   arrays of random elements.
+3. Re-implement Selection Sort in Rust, Erlang, and Clojure.
+
 # 2023-08-06 (Su)
 
 I'm now using vectors for the helper functions in the Clojure sorting module,
