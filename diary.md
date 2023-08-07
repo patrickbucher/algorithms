@@ -18,6 +18,13 @@ I implemented Selection Sort from my pseudo-code solution, and it worked
 immediately. I benchmarked it against insertion sort, and it is roughtly 75%
 slower than Insertion Sort.
 
+The Rust implementation was pretty much a straightforward translation from Go.
+
+Th Erlang implementation was a bit trickier; I had to write a helper function
+`smallest_to_front/1` for dealing with the unsorted right-hand side part of the
+list. I got that one right on first try, but used it the wrong way in the actual
+algorithm.
+
 # 2023-08-06 (Su)
 
 I'm now using vectors for the helper functions in the Clojure sorting module,
