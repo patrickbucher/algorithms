@@ -19,6 +19,7 @@ Here's
 
 - Sorting
     - Insertion Sort
+    - Selection Sort
 - Miscellaneous
-    - binary addition
-    - binary to decimal and decimal to binary conversion
+    - Binary Addition (Little Endian)
+    - Binary to Decimal and Decimal to Binary Conversion (Little Endian)
