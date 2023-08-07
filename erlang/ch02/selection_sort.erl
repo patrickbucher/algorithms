@@ -1,5 +1,5 @@
 -module(selection_sort).
--export([sort/1, smallest_to_front/1]).
+-export([sort/1]).
 
 sort([]) -> [];
 sort([H]) -> [H];
