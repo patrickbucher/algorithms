@@ -15,4 +15,8 @@ main(_) ->
 
     compile:file("./binaries.erl"),
     compile:file("./binaries_tests.erl"),
-    eunit:test(binaries).
+    eunit:test(binaries),
+
+    compile:file("./selection_sort.erl"),
+    compile:file("./selection_sort_tests.erl"),
+    eunit:test(selection_sort).
