@@ -1,3 +1,10 @@
+# 2023-08-08 (Tu)
+
+I started with the sub-chapter on Merge Sort, which contains quite a large
+discussion on the runtime properties. I only made it half-way through the
+exercises. Exercise 2.3-2 contains a mistake that I spotted (and verified by
+checking the errata), so I need to re-do this exercise.
+
 # 2023-08-07 (Mo)
 
 I read the second part of the second chapter and managed to do the rather easy
