@@ -20,6 +20,10 @@ Here's
 - Sorting
     - Insertion Sort
     - Selection Sort
+    - Merge Sort
+- Searching
+    - Linear Search
+    - Binary Search
 - Miscellaneous
     - Binary Addition (Little Endian)
     - Binary to Decimal and Decimal to Binary Conversion (Little Endian)
