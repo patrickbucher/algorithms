@@ -30,6 +30,12 @@ func TestBinarySearchBig(t *testing.T) {
 	slice := InsertionSort(sorting.RandomSlice(n, 0, n))
 	atPos := rand.Intn(n)
 	value := slice[atPos]
+	for i := 0; i < n; i++ {
+		// make value searched for unique
+		if slice[i] == value && i != atPos {
+			slice[i] = 0
+		}
+	}
 	actual := BinarySearch(slice, value)
 	if actual != atPos {
 		t.Errorf("expected to find value %d at index %d, was %d",

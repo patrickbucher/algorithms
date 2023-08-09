@@ -6,10 +6,10 @@ import (
 	"github.com/patrickbucher/algorithms/sorting"
 )
 
-const TestSize = 10_000
+const SortTestSize = 10_000
 
 func BenchmarkInsertionSort(b *testing.B) {
-	numbers := sorting.RandomSlice(TestSize, 0, TestSize)
+	numbers := sorting.RandomSlice(SortTestSize, 0, SortTestSize)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		InsertionSort(numbers)
@@ -17,7 +17,7 @@ func BenchmarkInsertionSort(b *testing.B) {
 }
 
 func BenchmarkSelectionSort(b *testing.B) {
-	numbers := sorting.RandomSlice(TestSize, 0, TestSize)
+	numbers := sorting.RandomSlice(SortTestSize, 0, SortTestSize)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SelectionSort(numbers)
@@ -25,7 +25,7 @@ func BenchmarkSelectionSort(b *testing.B) {
 }
 
 func BenchmarkMergeSort(b *testing.B) {
-	numbers := sorting.RandomSlice(TestSize, 0, TestSize)
+	numbers := sorting.RandomSlice(SortTestSize, 0, SortTestSize)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		MergeSort(numbers)
@@ -33,7 +33,7 @@ func BenchmarkMergeSort(b *testing.B) {
 }
 
 func BenchmarkParallelMergeSort(b *testing.B) {
-	numbers := sorting.RandomSlice(TestSize, 0, TestSize)
+	numbers := sorting.RandomSlice(SortTestSize, 0, SortTestSize)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		ParallelMergeSort(numbers)
