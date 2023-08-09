@@ -58,3 +58,21 @@ func IsSortedDesc[T constraints.Ordered](slice []T) bool {
 	cmp := func(left, right T) bool { return left >= right }
 	return IsSorted[T](slice, cmp)
 }
+
+// Shuffle returns a slice containing the values of the given slice in random order.
+func Shuffle[T any](slice []T) []T {
+	n := len(slice)
+	backup := make([]T, n)
+	copy(backup, slice)
+	shuffled := make([]T, 0)
+	m := len(backup)
+	for i := 0; i < n; i++ {
+		j := rand.Intn(m)
+		shuffled = append(shuffled, backup[j])
+		for ; j < m-1; j++ {
+			backup[j] = backup[j+1]
+		}
+		m--
+	}
+	return shuffled
+}

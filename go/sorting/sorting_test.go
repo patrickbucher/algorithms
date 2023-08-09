@@ -85,3 +85,33 @@ func TestIsSortedAscDesc(t *testing.T) {
 		}
 	}
 }
+
+func TestShuffle(t *testing.T) {
+	const n = 100
+	slice := make([]int, 0)
+	for i := 0; i < n; i++ {
+		slice = append(slice, i)
+	}
+	shuffled := Shuffle(slice)
+	if len(shuffled) != n {
+		t.Errorf("expected shuffled slice to be of length (%d), was %d",
+			n, len(shuffled))
+	}
+	found := 0
+	for _, x := range slice {
+		ok := false
+		for _, y := range shuffled {
+			if x == y {
+				ok = true
+				found++
+				break
+			}
+		}
+		if !ok {
+			t.Errorf("missing value %d in shuffled slice", x)
+		}
+	}
+	if found != n {
+		t.Errorf("expected to find %d values in shuffled slice, was %d", n, found)
+	}
+}

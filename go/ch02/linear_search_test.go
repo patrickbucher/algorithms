@@ -2,14 +2,14 @@ package ch02
 
 import "testing"
 
-type LinearSearchTest[T comparable] struct {
+type SearchTest[T comparable] struct {
 	Haystack []T
 	Needle   T
 	AtIndex  int
 }
 
 func TestLinearSearch(t *testing.T) {
-	tests := []LinearSearchTest[int]{
+	tests := []SearchTest[int]{
 		{[]int{}, 0, -1},
 		{[]int{1}, 0, -1},
 		{[]int{1}, 1, 0},
