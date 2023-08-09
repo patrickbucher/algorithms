@@ -19,7 +19,8 @@ I figured out a few simplifications, but mostly on the code side; the
 performance gain was minimal. I also tried to use Insertion Sort for small `n`,
 which didn't help much either.
 
-So on towards Binary Search for a change.
+I implemented Binary Search, which is, for sorted slices, way more efficient
+than linear search. The benchmark really showed that.
 
 # 2023-08-08 (Tu)
 
