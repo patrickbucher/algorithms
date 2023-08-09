@@ -22,6 +22,16 @@ which didn't help much either.
 I implemented Binary Search, which is, for sorted slices, way more efficient
 than linear search. The benchmark really showed that.
 
+I also implemented the recursive version of Insertion Sort, which mostly
+replaces the top loop with recursion. Therefore, I don't need to implement that
+in either Erlang or Clojure.
+
+The choice in the book of index 1 as the start of an array started to annoy me,
+especially because in the Merge Sort pseudo-code, index 0 was used for
+convenience. (0 as the first index is a decent choice, obviously.)
+
+Anyway; on towards Rust.
+
 # 2023-08-08 (Tu)
 
 I started with the sub-chapter on Merge Sort, which contains quite a large
