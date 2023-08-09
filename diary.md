@@ -1,3 +1,14 @@
+# 2023-08-09 (We)
+
+I worked through the remaining exercises, but did not tackle the problems so
+far. I'd rather first program through the following:
+
+1. Merge Sort
+    - Parallel Merge Sort
+    - Benchmark for Comparison
+2. Binary Search
+3. Recursive version of Insertion Sort
+
 # 2023-08-08 (Tu)
 
 I started with the sub-chapter on Merge Sort, which contains quite a large
