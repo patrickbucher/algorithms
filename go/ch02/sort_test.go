@@ -39,3 +39,11 @@ func BenchmarkParallelMergeSort(b *testing.B) {
 		ParallelMergeSort(numbers)
 	}
 }
+
+func BenchmarkRecursiveInsertionSort(b *testing.B) {
+	numbers := sorting.RandomSlice(SortTestSize, 0, SortTestSize)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		RecursiveInsertionSort(numbers)
+	}
+}
