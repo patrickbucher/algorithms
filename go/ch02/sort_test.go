@@ -31,3 +31,11 @@ func BenchmarkMergeSort(b *testing.B) {
 		MergeSort(numbers)
 	}
 }
+
+func BenchmarkParallelMergeSort(b *testing.B) {
+	numbers := sorting.RandomSlice(TestSize, 0, TestSize)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		ParallelMergeSort(numbers)
+	}
+}
