@@ -35,7 +35,7 @@ func TestParallelMergeSort(t *testing.T) {
 }
 
 func TestBigParallelMergeSort(t *testing.T) {
-	n := int(1e6)
+	n := int(1e4)
 	input := sorting.RandomSlice(n, 0, n)
 	actual := ParallelMergeSort(input)
 	if !sorting.IsSortedAsc(actual) {

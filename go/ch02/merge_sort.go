@@ -75,10 +75,6 @@ func ParallelMergeSort[T constraints.Ordered](slice []T) []T {
 }
 
 func parallelMergeSort[T constraints.Ordered](slice []T, result chan<- T) {
-	// TOOD: simplify code
-	// additional base case for n == 2
-	// initialize bl and br with one read from each channel (both have at least one value)
-	// this should simplify the merge loop
 	n := len(slice)
 	if n < 1 {
 		close(result)
@@ -118,36 +114,27 @@ func parallelMergeSort[T constraints.Ordered](slice []T, result chan<- T) {
 			br = nil
 		}
 	}
-	var leftover *T = nil
+	drain := func(ch chan T, buf *T, i, n int) *T {
+		for i < n {
+			v := <-ch
+			if buf != nil {
+				if *buf < v {
+					result <- *buf
+					buf = nil
+				}
+			}
+			result <- v
+			i++
+		}
+		return buf
+	}
+	bl = drain(leftCh, bl, i, nl)
+	br = drain(rightCh, br, j, nr)
 	if bl != nil {
-		leftover = bl
-	} else if br != nil {
-		leftover = br
+		result <- *bl
 	}
-	for i < nl {
-		l := <-leftCh
-		if leftover != nil {
-			if *leftover < l {
-				result <- *leftover
-				leftover = nil
-			}
-		}
-		result <- l
-		i++
-	}
-	for j < nr {
-		r := <-rightCh
-		if leftover != nil {
-			if *leftover < r {
-				result <- *leftover
-				leftover = nil
-			}
-		}
-		result <- r
-		j++
-	}
-	if leftover != nil {
-		result <- *leftover
+	if br != nil {
+		result <- *br
 	}
 	close(result)
 }

@@ -13,7 +13,13 @@ I implemented Merge Sort in Go, which was quite straightforward. I struggled a
 bit more with the parallel implementation, however. The problem is that once a
 value is read from a channel, it cannot be put back, but must be dealt with as
 an additional source. With that complication, Parallel Merge Sort is hardly
-faster than Insertion Sort, even slower for small `n`.
+faster than Selection Sort, even slower for small `n`.
+
+I figured out a few simplifications, but mostly on the code side; the
+performance gain was minimal. I also tried to use Insertion Sort for small `n`,
+which didn't help much either.
+
+So on towards Binary Search for a change.
 
 # 2023-08-08 (Tu)
 
