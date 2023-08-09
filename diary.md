@@ -9,6 +9,12 @@ far. I'd rather first program through the following:
 2. Binary Search
 3. Recursive version of Insertion Sort
 
+I implemented Merge Sort in Go, which was quite straightforward. I struggled a
+bit more with the parallel implementation, however. The problem is that once a
+value is read from a channel, it cannot be put back, but must be dealt with as
+an additional source. With that complication, Parallel Merge Sort is hardly
+faster than Insertion Sort, even slower for small `n`.
+
 # 2023-08-08 (Tu)
 
 I started with the sub-chapter on Merge Sort, which contains quite a large
