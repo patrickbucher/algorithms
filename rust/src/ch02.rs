@@ -1,5 +1,5 @@
 use std::marker::{Send, Sync};
-use std::sync::mpsc::{sync_channel, SyncSender};
+use std::sync::mpsc::{sync_channel, SyncSender, Receiver};
 use std::thread;
 
 pub fn insertion_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
@@ -258,28 +258,21 @@ fn split_and_merge<T: PartialOrd + Copy + Send + Sync + 'static>(
     if let Some(v) = br {
         leftover = Some(v);
     }
-    while i < nl {
-        let l = lrx.recv().unwrap();
-        if let Some(v) = leftover {
-            if v < l {
-                tx.send(v).unwrap();
-                leftover = None;
+    let drain = |rx: Receiver<T>, mut buf, i: usize, n: usize| -> Option<T> {
+        for _ in i..n {
+            let x = rx.recv().unwrap();
+            if let Some(y) = buf {
+                if y < x {
+                    tx.send(y).unwrap();
+                    buf = None;
+                }
             }
+            tx.send(x).unwrap();
         }
-        tx.send(l).unwrap();
-        i += 1;
-    }
-    while j < nr {
-        let r = rrx.recv().unwrap();
-        if let Some(v) = leftover {
-            if v < r {
-                tx.send(v).unwrap();
-                leftover = None;
-            }
-        }
-        tx.send(r).unwrap();
-        j += 1;
-    }
+        return buf;
+    };
+    leftover = drain(lrx, leftover, i, nl);
+    leftover = drain(rrx, leftover, j, nr);
     if let Some(v) = leftover {
         tx.send(v).unwrap();
     }
