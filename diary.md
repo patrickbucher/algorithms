@@ -1,3 +1,22 @@
+# 2023-08-10 (Th)
+
+I implemented Merge Sort in Rust, which was a quite straightforward translation
+from Go. The parallel implementation, however, took me some time. I didn't have
+any crashes (except when blowing the stack with huge test sizes), but the result
+was wrong. I figured out that my Go implementation contained a subtle bug,
+which, however, didn't show up in any of the Go tests. I was able to fix the
+bug, and the parallel implementation now also works in Rust. I also fixed the
+bug in Go, even though I was unable to reproduce it.
+
+Rust has implemented message passing quite similarly to Go. However, it does not
+use special syntax to distinguish between sending and receiving channels, but it
+uses a transmitter and a receiver instead. One disadvantage of Rust is its use
+of bare threads; Goroutines are way lighter.
+
+There's still Binary Search and a recursive version of Insertion Sort to do in
+Rust, but I already wonder whether or not I should dig into Erlang concurrency
+already. I think I should.
+
 # 2023-08-09 (We)
 
 I worked through the remaining exercises, but did not tackle the problems so
