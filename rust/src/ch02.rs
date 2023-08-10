@@ -1,5 +1,5 @@
 use std::marker::{Send, Sync};
-use std::sync::mpsc::{sync_channel, SyncSender, Receiver};
+use std::sync::mpsc::{sync_channel, Receiver, SyncSender};
 use std::thread;
 
 pub fn insertion_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
@@ -223,21 +223,15 @@ fn split_and_merge<T: PartialOrd + Copy + Send + Sync + 'static>(
     let mut bl: Option<T> = None;
     let mut br: Option<T> = None;
     while i < nl && j < nr {
-        match bl {
-            None => {
-                let l = lrx.recv().unwrap();
-                bl = Some(l);
-                i += 1;
-            }
-            _ => {}
+        if let None = bl {
+            let l = lrx.recv().unwrap();
+            bl = Some(l);
+            i += 1;
         }
-        match br {
-            None => {
-                let r = rrx.recv().unwrap();
-                br = Some(r);
-                j += 1;
-            }
-            _ => {}
+        if let None = br {
+            let r = rrx.recv().unwrap();
+            br = Some(r);
+            j += 1;
         }
         if let Some(l) = bl {
             if let Some(r) = br {
