@@ -36,7 +36,7 @@ func TestParallelMergeSort(t *testing.T) {
 
 func TestBigParallelMergeSort(t *testing.T) {
 	n := int(1e4)
-	input := sorting.RandomSlice(n, 0, n)
+	input := sorting.RandomSlice(n, 0, 1e5)
 	actual := ParallelMergeSort(input)
 	if !sorting.IsSortedAsc(actual) {
 		t.Errorf("ParallelMergeSort failed for n=%d", n)
