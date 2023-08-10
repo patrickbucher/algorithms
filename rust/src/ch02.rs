@@ -107,6 +107,65 @@ pub fn selection_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
     return ordered;
 }
 
+pub fn merge_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
+    let n = values.len();
+    let mut copied = Vec::with_capacity(n);
+    for i in 0..n {
+        copied.push(values[i]);
+    }
+    if n == 0 || n == 1 {
+        return copied;
+    }
+    merge_sort_in_place(&mut copied, 0, n - 1);
+    return copied;
+}
+
+fn merge_sort_in_place<T: PartialOrd + Copy>(values: &mut Vec<T>, p: usize, r: usize) {
+    if p >= r {
+        return;
+    }
+    let q = (p + r) / 2;
+    merge_sort_in_place(values, p, q);
+    merge_sort_in_place(values, q + 1, r);
+    merge(values, p, q, r);
+}
+
+fn merge<T: PartialOrd + Copy>(values: &mut Vec<T>, p: usize, q: usize, r: usize) {
+    let nl = q - p + 1;
+    let nr = r - q;
+    let mut left: Vec<T> = Vec::with_capacity(nl);
+    let mut right: Vec<T> = Vec::with_capacity(nr);
+    for i in p..=q {
+        left.push(values[i]);
+    }
+    for i in (q + 1)..=r {
+        right.push(values[i]);
+    }
+    let mut i = 0;
+    let mut j = 0;
+    let mut k = p;
+    while i < nl && j < nr {
+        if left[i] < right[j] {
+            values[k] = left[i];
+            i += 1;
+        } else {
+            values[k] = right[j];
+            j += 1;
+        }
+        k += 1;
+    }
+    while i < nl {
+        values[k] = left[i];
+        i += 1;
+        k += 1;
+    }
+    while j < nr {
+        values[k] = right[j];
+        j += 1;
+        k += 1;
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::ch02::add_binary;
@@ -114,10 +173,46 @@ mod tests {
     use crate::ch02::decimal_to_binary;
     use crate::ch02::insertion_sort;
     use crate::ch02::linear_search;
+    use crate::ch02::merge_sort;
     use crate::ch02::selection_sort;
     use crate::sorting::equal;
     use crate::sorting::is_sorted_asc;
     use crate::sorting::random_vec;
+
+    #[test]
+    fn test_merge_sort_empty_vec() {
+        let v: Vec<i32> = vec![];
+        assert!(equal(&v, &merge_sort(&v)));
+    }
+
+    #[test]
+    fn test_merge_sort_single_element() {
+        let v: Vec<i32> = vec![1];
+        assert!(equal(&v, &merge_sort(&v)));
+    }
+
+    #[test]
+    fn test_merge_sort_multiple_elements() {
+        let values = vec![3, 1, 2];
+        let expected = vec![1, 2, 3];
+        let actual = &merge_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_merge_sort_more_multiple_elements() {
+        let values = vec![6, 1, 2, 5, 4, 3];
+        let expected = vec![1, 2, 3, 4, 5, 6];
+        let actual = &merge_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_merge_sort_long_vector() {
+        let values = random_vec(1000, 1, 1000);
+        let actual = &merge_sort(&values);
+        assert!(is_sorted_asc(actual));
+    }
 
     #[test]
     fn test_selection_sort_empty_vec() {
