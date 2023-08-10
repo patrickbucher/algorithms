@@ -1,3 +1,7 @@
+use std::marker::{Send, Sync};
+use std::sync::mpsc::{sync_channel, SyncSender};
+use std::thread;
+
 pub fn insertion_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
     let n = values.len();
     let mut ordered: Vec<T> = Vec::with_capacity(n);
@@ -166,6 +170,121 @@ fn merge<T: PartialOrd + Copy>(values: &mut Vec<T>, p: usize, q: usize, r: usize
     }
 }
 
+pub fn parallel_merge_sort<T: PartialOrd + Copy + Send + Sync + 'static>(
+    values: &Vec<T>,
+) -> Vec<T> {
+    let n = values.len();
+    let mut copied = Vec::with_capacity(n);
+    for i in 0..n {
+        copied.push(values[i]);
+    }
+    let (tx, rx) = sync_channel::<T>(0);
+    thread::spawn(move || {
+        split_and_merge(&copied, tx);
+    });
+    let mut result = Vec::with_capacity(n);
+    for v in rx {
+        result.push(v);
+    }
+    return result;
+}
+
+fn split_and_merge<T: PartialOrd + Copy + Send + Sync + 'static>(
+    values: &Vec<T>,
+    tx: SyncSender<T>,
+) {
+    let n = values.len();
+    if n < 1 {
+        return;
+    }
+    if n == 1 {
+        tx.send(values[0]).unwrap();
+        return;
+    }
+    let mid = n / 2;
+    let (nl, nr) = (mid, n - mid);
+    let mut left = Vec::with_capacity(nl);
+    let mut right = Vec::with_capacity(nr);
+    for i in 0..mid {
+        left.push(values[i]);
+    }
+    for i in mid..n {
+        right.push(values[i]);
+    }
+    let (ltx, lrx) = sync_channel::<T>(0);
+    let (rtx, rrx) = sync_channel::<T>(0);
+    thread::spawn(move || {
+        split_and_merge(&left, ltx);
+    });
+    thread::spawn(move || {
+        split_and_merge(&right, rtx);
+    });
+    let (mut i, mut j) = (0, 0);
+    let mut bl: Option<T> = None;
+    let mut br: Option<T> = None;
+    while i < nl && j < nr {
+        match bl {
+            None => {
+                let l = lrx.recv().unwrap();
+                bl = Some(l);
+                i += 1;
+            }
+            _ => {}
+        }
+        match br {
+            None => {
+                let r = rrx.recv().unwrap();
+                br = Some(r);
+                j += 1;
+            }
+            _ => {}
+        }
+        if let Some(l) = bl {
+            if let Some(r) = br {
+                if l < r {
+                    tx.send(l).unwrap();
+                    bl = None;
+                } else {
+                    tx.send(r).unwrap();
+                    br = None;
+                }
+            }
+        }
+    }
+    let mut leftover: Option<T> = None;
+    if let Some(v) = bl {
+        leftover = Some(v);
+    }
+    if let Some(v) = br {
+        leftover = Some(v);
+    }
+    while i < nl {
+        let l = lrx.recv().unwrap();
+        if let Some(v) = leftover {
+            if v < l {
+                tx.send(v).unwrap();
+                leftover = None;
+            }
+        }
+        tx.send(l).unwrap();
+        i += 1;
+    }
+    while j < nr {
+        let r = rrx.recv().unwrap();
+        if let Some(v) = leftover {
+            if v < r {
+                tx.send(v).unwrap();
+                leftover = None;
+            }
+        }
+        tx.send(r).unwrap();
+        j += 1;
+    }
+    if let Some(v) = leftover {
+        tx.send(v).unwrap();
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::ch02::add_binary;
@@ -174,10 +293,46 @@ mod tests {
     use crate::ch02::insertion_sort;
     use crate::ch02::linear_search;
     use crate::ch02::merge_sort;
+    use crate::ch02::parallel_merge_sort;
     use crate::ch02::selection_sort;
     use crate::sorting::equal;
     use crate::sorting::is_sorted_asc;
     use crate::sorting::random_vec;
+
+    #[test]
+    fn test_parallel_merge_sort_empty_vec() {
+        let v: Vec<i32> = vec![];
+        assert!(equal(&v, &parallel_merge_sort(&v)));
+    }
+
+    #[test]
+    fn test_parallel_merge_sort_single_element() {
+        let v: Vec<i32> = vec![1];
+        assert!(equal(&v, &parallel_merge_sort(&v)));
+    }
+
+    #[test]
+    fn test_parallel_merge_sort_multiple_elements() {
+        let values = vec![3, 1, 2];
+        let expected = vec![1, 2, 3];
+        let actual = &parallel_merge_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_parallel_merge_sort_more_multiple_elements() {
+        let values = vec![6, 1, 0, 2, 5, 4, 3, 7];
+        let expected = vec![0, 1, 2, 3, 4, 5, 6, 7];
+        let actual = &parallel_merge_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_parallel_merge_sort_long_vector() {
+        let values = random_vec(5000, 1, 1e6 as i32);
+        let actual = &parallel_merge_sort(&values);
+        assert!(is_sorted_asc(actual));
+    }
 
     #[test]
     fn test_merge_sort_empty_vec() {
