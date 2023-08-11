@@ -27,18 +27,29 @@ func TestBinarySearch(t *testing.T) {
 
 func TestBinarySearchBig(t *testing.T) {
 	n := 1000
-	slice := InsertionSort(sorting.RandomSlice(n, 0, n))
-	atPos := rand.Intn(n)
-	value := slice[atPos]
+	slice := sorting.RandomSlice(n, 0, n)
+	value := slice[rand.Intn(n)]
+	occurrence := 0
 	for i := 0; i < n; i++ {
 		// make value searched for unique
-		if slice[i] == value && i != atPos {
-			slice[i] = 0
+		if slice[i] == value {
+			if occurrence > 0 {
+				slice[i] = 0
+			}
+			occurrence++
+		}
+	}
+	slice = InsertionSort(slice)
+	expected := -1
+	for i := 0; i < n; i++ {
+		if slice[i] == value {
+			expected = i
+			break
 		}
 	}
 	actual := BinarySearch(slice, value)
-	if actual != atPos {
+	if actual != expected {
 		t.Errorf("expected to find value %d at index %d, was %d",
-			value, atPos, actual)
+			value, expected, actual)
 	}
 }
