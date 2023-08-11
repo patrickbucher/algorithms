@@ -1,3 +1,15 @@
+# 2023-08-11 (Fr)
+
+I started the day with some fixes. First, I was unable to reproduce the issue
+with Parallel Merge Sort in Go yesterday. So I restored the old version and
+tested it against the case that failed in Rust yesterday. With that small array
+of eight values, I could reproduce the issue. I restored the fixed version, and
+everything was fine. Case closed.
+
+The test for Binary Search with generated data was a bit fleaky. The problem was
+that I tried to make a value unique in a _sorted_ array, i.e. turning it into an
+unsorted one in the process. I fixed that test, which now runs through nicely.
+
 # 2023-08-10 (Th)
 
 I implemented Merge Sort in Rust, which was a quite straightforward translation
