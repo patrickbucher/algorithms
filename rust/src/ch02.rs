@@ -272,9 +272,41 @@ fn split_and_merge<T: PartialOrd + Copy + Send + Sync + 'static>(
     }
 }
 
+pub fn binary_search<T: PartialOrd>(haystack: &Vec<T>, needle: T) -> Option<usize> {
+    let n = haystack.len();
+    if n == 0 {
+        return None;
+    }
+    if n == 1 && haystack[0] == needle {
+        return Some(0);
+    }
+    return recursive_binary_search(haystack, needle, 0, n);
+}
+
+fn recursive_binary_search<T: PartialOrd>(
+    haystack: &Vec<T>,
+    needle: T,
+    p: usize,
+    r: usize,
+) -> Option<usize> {
+    let n = r - p;
+    if n == 0 {
+        return None;
+    }
+    let q = p + n / 2;
+    if needle == haystack[q] {
+        return Some(q);
+    } else if needle < haystack[q] {
+        return recursive_binary_search(haystack, needle, p, q);
+    } else {
+        return recursive_binary_search(haystack, needle, q + 1, r);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::ch02::add_binary;
+    use crate::ch02::binary_search;
     use crate::ch02::binary_to_decimal;
     use crate::ch02::decimal_to_binary;
     use crate::ch02::insertion_sort;
@@ -285,6 +317,62 @@ mod tests {
     use crate::sorting::equal;
     use crate::sorting::is_sorted_asc;
     use crate::sorting::random_vec;
+    use rand::Rng;
+
+    #[test]
+    fn test_binary_search_empty_vec() {
+        let v: Vec<i32> = vec![];
+        let actual = binary_search(&v, 0);
+        assert!(actual == None);
+    }
+
+    #[test]
+    fn test_binary_search_find_in_single_element_vec() {
+        let v: Vec<i32> = vec![0];
+        let actual = binary_search(&v, 0);
+        assert!(actual == Some(0));
+    }
+
+    #[test]
+    fn test_binary_search_miss_in_single_element_vec() {
+        let v: Vec<i32> = vec![0];
+        let actual = binary_search(&v, 1);
+        assert!(actual == None);
+    }
+
+    #[test]
+    fn test_binary_search_find_in_multi_element_vec() {
+        let v: Vec<i32> = vec![0, 1, 2, 3, 4, 5, 6, 7];
+        let actual = binary_search(&v, 3);
+        assert!(actual == Some(3));
+    }
+
+    #[test]
+    fn test_binary_search_find_in_big_vec() {
+        let n = 1000;
+        let mut v = random_vec(n, 0, n);
+        let value = v[rand::thread_rng().gen_range(0..n) as usize];
+        let mut occurrence = 0;
+        for i in 0..(n as usize) {
+            // make value searched for unique
+            if v[i] == value {
+                if occurrence > 0 {
+                    v[i] = 0;
+                }
+                occurrence += 1;
+            }
+        }
+        v = insertion_sort(&v);
+        let mut expected: Option<usize> = None;
+        for i in 0..(n as usize) {
+            if v[i] == value {
+                expected = Some(i);
+                break;
+            }
+        }
+        let actual = binary_search(&v, value);
+        assert!(actual == expected);
+    }
 
     #[test]
     fn test_parallel_merge_sort_empty_vec() {
