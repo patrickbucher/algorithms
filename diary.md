@@ -1,3 +1,17 @@
+# 2023-08-12 (Sa)
+
+Having done Binary Search in Rust yesterday, I implemented the recursive version
+of Insertion Sort also in Rust. I was surprised that the borrow checker didn't
+throw any errors; the compiler must be really smart, indeed. I struggled with a
+couple of off-by-one errors, and run again into the underflow issue of `usize`
+variables. I applied the same solution as for the original Insertion Sort Rust
+implementation, which turned out fine. (The recursion just replaces the outer
+loop.)
+
+Now on towards Erlang, for which the Insertion Sort is already implemented
+recursively. So I'll only implement Merge Sort and Binary Search in Erlang. I'll
+also try to write a Parallel Merge Soft, which will require some research.
+
 # 2023-08-11 (Fr)
 
 I started the day with some fixes. First, I was unable to reproduce the issue
