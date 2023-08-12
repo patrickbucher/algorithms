@@ -16,6 +16,16 @@ Merge Sort was quite a joy to implement in Erlang. The code is roughly a third
 of the size compared to the Go version. However, since lists are built from the
 right by appending on the left, I forgot to reverse the accumulator at the end.
 
+In the evening, after reading the first chapter on concurrency, I implemented
+Parallel Merge Sort in Erlang. The only issue I had was that I forgot to put the
+sender's PID into the message, which made the whole program stuck. After fixing
+that issue, sorting worked fine, and really used all of my CPUs.
+
+I chose a different approach than in Go and Rust, where I read the sorted values
+one by one for merging them. In Erlang, I split the list in two, and spawned to
+processes to sort the sublist. Merging then happened in parallel. The code is
+very concise, and I'm really happy with it.
+
 # 2023-08-11 (Fr)
 
 I started the day with some fixes. First, I was unable to reproduce the issue
