@@ -23,4 +23,8 @@ main(_) ->
 
     compile:file("./merge_sort.erl"),
     compile:file("./merge_sort_tests.erl"),
-    eunit:test(merge_sort).
+    eunit:test(merge_sort),
+
+    compile:file("./binary_search.erl"),
+    compile:file("./binary_search_tests.erl"),
+    eunit:test(binary_search).
