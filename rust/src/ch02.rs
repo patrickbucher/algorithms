@@ -303,6 +303,37 @@ fn recursive_binary_search<T: PartialOrd>(
     }
 }
 
+fn recursive_insertion_sort<T: PartialOrd + Copy>(values: &Vec<T>) -> Vec<T> {
+    let n = values.len();
+    let mut ordered = Vec::with_capacity(n);
+    for i in 0..n {
+        ordered.push(values[i]);
+    }
+    if n <= 1 {
+        return ordered;
+    }
+    insert_next(&mut ordered, n);
+    return ordered;
+}
+
+fn insert_next<T: PartialOrd + Copy>(values: &mut Vec<T>, n: usize) {
+    if n <= 1 {
+        return;
+    }
+    insert_next(values, n - 1);
+    let mut insert_at = n - 1;
+    let e = values[insert_at];
+    for i in (0..=(n - 2)).rev() {
+        if values[i] > e {
+            values[i + 1] = values[i];
+            insert_at = i;
+        } else {
+            break;
+        }
+    }
+    values[insert_at] = e;
+}
+
 #[cfg(test)]
 mod tests {
     use crate::ch02::add_binary;
@@ -313,11 +344,47 @@ mod tests {
     use crate::ch02::linear_search;
     use crate::ch02::merge_sort;
     use crate::ch02::parallel_merge_sort;
+    use crate::ch02::recursive_insertion_sort;
     use crate::ch02::selection_sort;
     use crate::sorting::equal;
     use crate::sorting::is_sorted_asc;
     use crate::sorting::random_vec;
     use rand::Rng;
+
+    #[test]
+    fn test_recursive_insertion_sort_empty_vec() {
+        let v: Vec<i32> = vec![];
+        assert!(equal(&v, &recursive_insertion_sort(&v)));
+    }
+
+    #[test]
+    fn test_recursive_insertion_sort_single_element() {
+        let v: Vec<i32> = vec![1];
+        assert!(equal(&v, &recursive_insertion_sort(&v)));
+    }
+
+    #[test]
+    fn test_recursive_insertion_sort_multiple_elements() {
+        let values = vec![3, 1, 2];
+        let expected = vec![1, 2, 3];
+        let actual = &recursive_insertion_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_recursive_insertion_sort_more_multiple_elements() {
+        let values = vec![6, 1, 2, 5, 4, 3];
+        let expected = vec![1, 2, 3, 4, 5, 6];
+        let actual = &recursive_insertion_sort(&values);
+        assert!(equal(&expected, &actual));
+    }
+
+    #[test]
+    fn test_recursive_insertion_sort_long_vector() {
+        let values = random_vec(1000, 1, 1000);
+        let actual = &recursive_insertion_sort(&values);
+        assert!(is_sorted_asc(actual));
+    }
 
     #[test]
     fn test_binary_search_empty_vec() {
