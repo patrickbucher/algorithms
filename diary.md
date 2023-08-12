@@ -26,6 +26,14 @@ one by one for merging them. In Erlang, I split the list in two, and spawned to
 processes to sort the sublist. Merging then happened in parallel. The code is
 very concise, and I'm really happy with it.
 
+I finished off the day with Binary Search in Erlang. I struggled a bit with the
+1-based indices for lists functions (`lists:nth/2`, `lists:sublist/3`). Once I
+figured out that I need a special clause to deal with the case that the lower
+bound is greater or equal to the upper bound (which should terminate; the
+element was not found), all tests turned green.
+
+On towards Clojure tomorrow; then some more problems from the book.
+
 # 2023-08-11 (Fr)
 
 I started the day with some fixes. First, I was unable to reproduce the issue
