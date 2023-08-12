@@ -19,4 +19,8 @@ main(_) ->
 
     compile:file("./selection_sort.erl"),
     compile:file("./selection_sort_tests.erl"),
-    eunit:test(selection_sort).
+    eunit:test(selection_sort),
+
+    compile:file("./merge_sort.erl"),
+    compile:file("./merge_sort_tests.erl"),
+    eunit:test(merge_sort).
