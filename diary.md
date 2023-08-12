@@ -12,6 +12,10 @@ Now on towards Erlang, for which the Insertion Sort is already implemented
 recursively. So I'll only implement Merge Sort and Binary Search in Erlang. I'll
 also try to write a Parallel Merge Soft, which will require some research.
 
+Merge Sort was quite a joy to implement in Erlang. The code is roughly a third
+of the size compared to the Go version. However, since lists are built from the
+right by appending on the left, I forgot to reverse the accumulator at the end.
+
 # 2023-08-11 (Fr)
 
 I started the day with some fixes. First, I was unable to reproduce the issue
