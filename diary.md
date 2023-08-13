@@ -1,3 +1,9 @@
+# 2023-08-13 (Su)
+
+I started the day with Merge Sort in Clojure. Now I'm wondering how to
+parallelize it. Using `pmap`, I could turn a pair of two vectors into a pair of
+two _sorted_ vectors; I'll give it a try.
+
 # 2023-08-12 (Sa)
 
 Having done Binary Search in Rust yesterday, I implemented the recursive version
