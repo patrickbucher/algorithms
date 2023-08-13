@@ -14,6 +14,14 @@ As I suspected: Re-implementing the algorithm in Clojure so far came down to
 simplification. I spent the least time with Clojure so far, and probably also
 the least characters for solving the same problems.
 
+In the evening, I worked a bit on the problems, but I was unable to figure out
+the math. I also won't implement the modified version of merge sort (_coarsen_
+the leaves), for it poses no implementation challenge, except for finding an
+optimal `k`.
+
+Tomorrow, I'll work through the problems concerning Bubble Sort. I won't try for
+too long, but rather do all four implementations.
+
 # 2023-08-12 (Sa)
 
 Having done Binary Search in Rust yesterday, I implemented the recursive version
