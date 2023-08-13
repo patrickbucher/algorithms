@@ -4,6 +4,16 @@ I started the day with Merge Sort in Clojure. Now I'm wondering how to
 parallelize it. Using `pmap`, I could turn a pair of two vectors into a pair of
 two _sorted_ vectors; I'll give it a try.
 
+Having tried `pmap` with sobering results in terms of performance, I implemented
+Parallel Merge Sort using a `future`, which is the least intrusive way
+parallelizing Merge Sort that I've seen so far. I also implemented Binary
+Search, and figured out that I've forgotten to implement Linear Search in
+Clojure, which I did quickly.
+
+As I suspected: Re-implementing the algorithm in Clojure so far came down to
+simplification. I spent the least time with Clojure so far, and probably also
+the least characters for solving the same problems.
+
 # 2023-08-12 (Sa)
 
 Having done Binary Search in Rust yesterday, I implemented the recursive version
