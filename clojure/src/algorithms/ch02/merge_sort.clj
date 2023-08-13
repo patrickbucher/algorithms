@@ -25,3 +25,14 @@
           l (merge-sort (subvec v 0 m))
           r (merge-sort (subvec v m n))]
       (merge-ordered l r))))
+
+(defn parallel-merge-sort
+  "Returns an ascendingly sorted vector (done concurrently)."
+  [v]
+  (let [n (count v)]
+    (if (<= n 1)
+      v
+      (let [m (int (/ n 2))
+            l (future (merge-sort (subvec v 0 m)))
+            r (future (merge-sort (subvec v m n)))]
+        (merge-ordered @l @r)))))
