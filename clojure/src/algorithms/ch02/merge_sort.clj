@@ -18,13 +18,13 @@
 (defn merge-sort
   "Returns an ascendingly sorted vector."
   [v]
-  (if (or (empty? v) (= (count v) 1))
-    v
-    (let [n (count v)
-          m (int (/ n 2))
-          l (merge-sort (subvec v 0 m))
-          r (merge-sort (subvec v m n))]
-      (merge-ordered l r))))
+  (let [n (count v)]
+    (if (<= n 1)
+      v
+      (let [m (int (/ n 2))
+            l (merge-sort (subvec v 0 m))
+            r (merge-sort (subvec v m n))]
+        (merge-ordered l r)))))
 
 (defn parallel-merge-sort
   "Returns an ascendingly sorted vector (done concurrently)."
