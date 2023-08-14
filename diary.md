@@ -1,3 +1,9 @@
+# 2023-08-14 (Mo)
+
+I worked through the Bubble Sort problems as good as possible, then implemented
+in Go and Rust, which was quite easy. I have to think of the functional
+implementation a bit before I tackle it in Erlang.
+
 # 2023-08-13 (Su)
 
 I started the day with Merge Sort in Clojure. Now I'm wondering how to
