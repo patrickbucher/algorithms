@@ -47,3 +47,11 @@ func BenchmarkRecursiveInsertionSort(b *testing.B) {
 		RecursiveInsertionSort(numbers)
 	}
 }
+
+func BenchmarkBubbleSort(b *testing.B) {
+	numbers := sorting.RandomSlice(SortTestSize, 0, SortTestSize)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		BubbleSort(numbers)
+	}
+}
