@@ -1,3 +1,15 @@
+# 2023-08-15 (Tu)
+
+I started with the Erlang implementation of Bubble Sort, which is quite a bad
+fit, because the algorithm is based on swapping elements in an array (or: list,
+for that matter). Implementing `swap/3` requires to take the list apart: the two
+elements to be swapped, but also the three lists in between, which then need to
+be assembled into a fresh list. Implementing nested loops by the means of
+recursion was new to me, but I managed to get it running correctly on the first
+try. So I'm quite happy with the result; my intuitions were correct. I'm less
+happy with runtime performance, of course; a test of size 1000 ran into a
+timeout, which probably is set to roughly 5 seconds.
+
 # 2023-08-14 (Mo)
 
 I worked through the Bubble Sort problems as good as possible, then implemented
