@@ -18,6 +18,51 @@ good exercise, however, and my implementation is closer to Erlang's
 re-implemented `swap` in Clojure, and the performance is dismal again; but
 that's Bubble Sort, after all…
 
+I'd like to finish the day with a thought I had after implementing Bubble Sort
+in the two functional languages: Bubble Sort is often thought as one of the
+first algorithms in school. It's not that easy to get right in regard of all
+those possible off-by-one errors. It took me quite a while to figure out Erlang
+and Clojure implementations, which then performed considerably worse than the
+structured interpretations. (I guess that the algorithm would be faster in
+Python or Ruby than in Clojure or Erlang.)
+
+However, when opening a book about Haskell, Quick Sort—one of the most efficient
+sorting algorithms—is introduced in chapter one as a two-clause function using
+list comprehensions. And it is a lot easier to get right than Bubble Sort. I
+tried out Quick Sort in Erlang and Clojure, and I got it right almost
+immediately. When I studied, we had an algorithms class in the second term. I
+remember fiddling with my code to get Merge Sort and Quick Sort right.
+(Parallelizing them using threads was even trickier.) Using a functional
+language would have saved us all the hassle.
+
+Today, I was reading the introduction to a book called _Algorithm Design in
+Haskell_. It summarized my sentiment quite well: With functional languages, one
+reasons about the actual workings of the algorithms, and less about intricate
+implementation details. (Bubble Sort, Insertion Sort, and Selection Sort aren't
+even covered in that particular book.)
+
+So I ordered said book today, but I'd still like to continue the current
+project, which yielded so many insights already after only a bit more than two
+weeks. But maybe I'll switch to the Haskell book and stick to functional
+languages, which would be Erlang, Clojure, and Haskell, of course. (Until then,
+I'll work through _Programming in Haskell_ besides, which is quite a concise
+book, but looks a lot less intimidating than during my first encouter with it in
+summer 2020, thanks to my nine months with SICP.)
+
+I'm also pretty tired of all those semi-defensive statements, oftentimes printed
+at the back of programming books along the lines of "even if you will never use
+[functional programming language blah] in practice, learning it will make you a
+much better programmer, no matter what language you will use in practice".
+Great, so the reader of said book will hate his Java day job even more
+afterwards!? Is that the purpose? Why don't we start to use the good stuff in
+production and ditch all those clumsy tools that make us unproductive and
+miserable and just yield horrible software? Why are we so afraid of hurting the
+feelings of mediocre programmers that no longer want to learn in their
+mid-thirties?
+
+That's it for my short rant; I need to go to sleep, tomorrow's another day: for
+learning!
+
 # 2023-08-14 (Mo)
 
 I worked through the Bubble Sort problems as good as possible, then implemented
