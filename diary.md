@@ -19,21 +19,21 @@ re-implemented `swap` in Clojure, and the performance is dismal again; but
 that's Bubble Sort, after all…
 
 I'd like to finish the day with a thought I had after implementing Bubble Sort
-in the two functional languages: Bubble Sort is often thought as one of the
+in the two functional languages: Bubble Sort is often thaught as one of the
 first algorithms in school. It's not that easy to get right in regard of all
 those possible off-by-one errors. It took me quite a while to figure out Erlang
 and Clojure implementations, which then performed considerably worse than the
 structured interpretations. (I guess that the algorithm would be faster in
 Python or Ruby than in Clojure or Erlang.)
 
-However, when opening a book about Haskell, Quick Sort—one of the most efficient
-sorting algorithms—is introduced in chapter one as a two-clause function using
-list comprehensions. And it is a lot easier to get right than Bubble Sort. I
-tried out Quick Sort in Erlang and Clojure, and I got it right almost
-immediately. When I studied, we had an algorithms class in the second term. I
-remember fiddling with my code to get Merge Sort and Quick Sort right.
-(Parallelizing them using threads was even trickier.) Using a functional
-language would have saved us all the hassle.
+However, when opening a book on Haskell, Quick Sort—one of the most efficient
+sorting algorithms, also called a "higher" sorting algorithm—is introduced in
+chapter one as a two-clause function using list comprehensions. And it is a lot
+easier to get right than Bubble Sort. I tried out Quick Sort in Erlang and
+Clojure, and I got it right almost immediately. When I studied, we had an
+algorithms class in the second term. I remember fiddling with my Java code to
+get Merge Sort and Quick Sort right.  (Parallelizing them using threads was even
+trickier.) Using a functional language would have saved us all the hassle.
 
 Today, I was reading the introduction to a book called _Algorithm Design in
 Haskell_. It summarized my sentiment quite well: With functional languages, one
