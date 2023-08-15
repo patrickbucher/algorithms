@@ -10,6 +10,14 @@ try. So I'm quite happy with the result; my intuitions were correct. I'm less
 happy with runtime performance, of course; a test of size 1000 ran into a
 timeout, which probably is set to roughly 5 seconds.
 
+The Clojure implementation was mostly a translation from Erlang. I implemented
+my own `subvector` routine, after which I noticed that there's already `subvec`
+(dealing with start and end index rather than start index and length). It was a
+good exercise, however, and my implementation is closer to Erlang's
+`list:sublist/3`, which also accepts a length as its third argument. I
+re-implemented `swap` in Clojure, and the performance is dismal again; but
+that's Bubble Sort, after all…
+
 # 2023-08-14 (Mo)
 
 I worked through the Bubble Sort problems as good as possible, then implemented
