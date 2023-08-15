@@ -27,4 +27,8 @@ main(_) ->
 
     compile:file("./binary_search.erl"),
     compile:file("./binary_search_tests.erl"),
-    eunit:test(binary_search).
+    eunit:test(binary_search),
+
+    compile:file("./bubble_sort.erl"),
+    compile:file("./bubble_sort_tests.erl"),
+    eunit:test(bubble_sort).
