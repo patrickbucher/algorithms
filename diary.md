@@ -1,3 +1,9 @@
+# 2023-08-16 (We)
+
+I finished off chapter two by working on the problems on Horner's Rule and
+Inversions. There's nothing worthwile implementing, so I'll continue with
+chapter 3, which is mostly a theoretical chapters with a lot of math.
+
 # 2023-08-15 (Tu)
 
 I started with the Erlang implementation of Bubble Sort, which is quite a bad
