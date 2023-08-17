@@ -1,3 +1,9 @@
+# 2023-08-17 (Th)
+
+I started with chapter 3 and tried to solve the first couple of exercises.
+However, I haven't fully understood how the arguments for Ω and O are
+established, so I need to re-read the whole part again.
+
 # 2023-08-16 (We)
 
 I finished off chapter two by working on the problems on Horner's Rule and
