@@ -1,3 +1,9 @@
+# 2023-08-18 (Fr)
+
+I re-read the first part of chapter 3 and tried to solve the first three
+exercises. I came up with a solution, but have no idea whether or not they are
+correct. So I keep my doubts and continue on reading.
+
 # 2023-08-17 (Th)
 
 I started with chapter 3 and tried to solve the first couple of exercises.
