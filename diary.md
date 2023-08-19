@@ -1,3 +1,12 @@
+# 2023-08-19 (Sa)
+
+I read the next part of chapter 3, which is a rather verbose exposition of the
+different asymptotic notations. I'm thinking about just going forward in the
+text, because I'm mostly interested in how to approach common algorithmic
+problems (i.e. to get to know different strategies to solve such problem) rather
+than in mathematically reasoning about their runtime (using five different
+notations, for that matter).
+
 # 2023-08-18 (Fr)
 
 I re-read the first part of chapter 3 and tried to solve the first three
