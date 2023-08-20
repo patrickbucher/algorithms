@@ -1,3 +1,24 @@
+# 2023-08-20 (Su)
+
+I read the rest of chapter 3, which is mostly about mathematical notations and
+conventions. I didn't bother to work on any of the exercises or problems. I'm
+not interested in the mathematical analysis of runtime properties, I'm
+interested in design strategies and comparing implementations in different
+languages.
+
+Furthermore, I have a lot of classes to teach and to prepare for, a Linux User
+Group to organize, and to continue working on a project for my company, so I
+don't see any way of getting acquainted with all the math needed.
+
+_Introduction to Algorithms_ is rather an encyclopedia than a textboox, and
+picking it for my purpose whithout looking closely into it first probably was a
+bad idea.
+
+However, I got a lot out of it in the last three weeks. I started learning
+Haskell besides, which should be really my focus now. Then I ordered _Algorithm
+Design with Haskell_, with which I'd like to undertake a similar project as this
+one. I won't archive this repo (yet), but I'll certainly do a break.
+
 # 2023-08-19 (Sa)
 
 I read the next part of chapter 3, which is a rather verbose exposition of the
