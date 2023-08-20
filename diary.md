@@ -19,6 +19,9 @@ Haskell besides, which should be really my focus now. Then I ordered _Algorithm
 Design with Haskell_, with which I'd like to undertake a similar project as this
 one. I won't archive this repo (yet), but I'll certainly do a break.
 
+Maybe I should try to re-implement everything I did so far in Haskell and maybe
+Ruby; the latter for getting up to speed again for the customer project.
+
 # 2023-08-19 (Sa)
 
 I read the next part of chapter 3, which is a rather verbose exposition of the
